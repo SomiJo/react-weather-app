@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import formattedDate from "./formattedDate";
 import "./Weather.css";
 
 export default function Weather(props) {
-  const [ready, setReady] = useState({ ready: false });
+  const [ready, setReady] = useState();
   const [weatherData, setweatherData] = useState(null);
   function handleResponse(response) {
     console.log(response.data);
@@ -19,6 +20,12 @@ export default function Weather(props) {
       icon: response.data.weather[0].icon,
       feels_like: response.data.main.feels_like,
     });
+  }
+  function search() {
+    const apiKey = "6d68aadfacdd4f5163bc273049a0cf2d";
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.default.City}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (ready) {
@@ -45,7 +52,9 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>{weatherData.date}</li>
+          <li>
+            <formattedDate date={weatherData.date} />
+          </li>
           <li>{weatherData.description}</li>
         </ul>
         <div className="row mt-3">
@@ -76,10 +85,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const apiKey = "6d68aadfacdd4f5163bc273049a0cf2d";
-
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.default.City}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return "Loading...";
   }
 }

@@ -30,9 +30,11 @@
   color: #212121;
   position: relative;
   line-height: 1;
-  top: -20px;
+  top: -34px;
 }
-
+.Weather .unit a {
+  text-decoration: none;
+}
 .Weather ul {
   margin: 0;
   padding: 0;

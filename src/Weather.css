@@ -3,12 +3,22 @@
   border: 1px solid #dadde1;
   padding: 16px;
   border-radius: 4px;
-  color: #878787;
+  margin: 16px;
+  font-size: 100%;
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    rgb(43, 50, 178) 0%,
+    rgb(20, 136, 204) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .Weather form {
   display: block;
   margin-top: 0em;
 }
+
 .Weather h1 {
   font-size: 24px;
   font-weight: 100;
@@ -18,7 +28,6 @@
 
 .Weather .temperature {
   font-weight: 700;
-  color: #212121;
   font-size: 64px;
   line-height: 64px;
   font-weight: 400;
@@ -27,18 +36,19 @@
 .Weather .unit {
   font-size: 16px;
   font-weight: 400px;
-  color: #212121;
   position: relative;
   line-height: 1;
   top: -34px;
 }
 .Weather .unit a {
   text-decoration: none;
+  color: rgb(43, 50, 178);
 }
 .Weather ul {
   margin: 0;
   padding: 0;
 }
+
 .Weather li {
   font-size: 16px;
   font-weight: 100;
